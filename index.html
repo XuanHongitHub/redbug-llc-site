@@ -117,7 +117,7 @@
     <!-- STORY -->
     <section id="story" style="scroll-margin-top:90px;max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(44px,5vw,80px);align-items:center;">
       <div style="position:relative;aspect-ratio:3/2;border-radius:4px;overflow:hidden;background:#E7DECF;box-shadow:0 2px 4px rgba(33,30,26,0.06), 0 36px 70px -38px rgba(33,30,26,0.5);">
-        <image-slot id="story-img" shape="rect" placeholder="Drop a workshop / studio image" style="position:absolute;inset:0;width:100%;height:100%;filter:grayscale(0.22) sepia(0.2) saturate(0.94) brightness(1.02) contrast(1.04);"></image-slot>
+        <img src="AD/AD/a017cbfe-6582-46d8-9341-c62a151aede8.png" alt="RedBug production workshop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.22) sepia(0.2) saturate(0.94) brightness(1.02) contrast(1.04);" />
         <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 38%, rgba(193,150,96,0.16), rgba(126,34,48,0.10) 70%, rgba(43,32,26,0.30));mix-blend-mode:soft-light;"></div>
         <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(33,30,26,0.18) 0%, rgba(33,30,26,0) 26%, rgba(33,30,26,0) 60%, rgba(33,30,26,0.5));"></div>
         <div style="position:absolute;left:0;right:0;bottom:0;pointer-events:none;display:flex;align-items:center;gap:11px;padding:18px 22px;">
@@ -147,7 +147,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,40px);">
           <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="3">
             <div>
-              <image-slot id="{{ cat.slotId }}" shape="rounded" radius="3" placeholder="{{ cat.ph }}" style="display:block;width:100%;aspect-ratio:4/5;background:#E2D8C7;margin-bottom:22px;"></image-slot>
+              <img src="{{ cat.img }}" alt="{{ cat.title }}" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#E2D8C7;margin-bottom:22px;border-radius:3px;" />
               <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
                 <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#7E2230;">{{ cat.num }}</span>
                 <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:27px;line-height:1.1;margin:0;color:#211E1A;">{{ cat.title }}</h3>
@@ -365,9 +365,9 @@ class Component extends DCLogic {
   renderVals() {
     const t = this.content();
     const cats = [
-      { slotId: 'cat-pod', num: '01', title: t.cat1Title, body: t.cat1Body, ph: t.cat1Title },
-      { slotId: 'cat-decor', num: '02', title: t.cat2Title, body: t.cat2Body, ph: t.cat2Title },
-      { slotId: 'cat-handmade', num: '03', title: t.cat3Title, body: t.cat3Body, ph: t.cat3Title }
+      { slotId: 'cat-pod', num: '01', title: t.cat1Title, body: t.cat1Body, ph: t.cat1Title, img: 'POD/POD/3efed7be-e499-4ec1-baa4-0bbde66b14bb.png' },
+      { slotId: 'cat-decor', num: '02', title: t.cat2Title, body: t.cat2Body, ph: t.cat2Title, img: 'AD/AD/ed1a9dc7-f4ba-430f-81fe-e7a13d8e134a.png' },
+      { slotId: 'cat-handmade', num: '03', title: t.cat3Title, body: t.cat3Body, ph: t.cat3Title, img: 'POD/POD/3c99be12-4983-4ae9-8782-1ef9cec08b97.png' }
     ];
     const trust = [
       { num: '01', title: t.t1Title, body: t.t1Body },
