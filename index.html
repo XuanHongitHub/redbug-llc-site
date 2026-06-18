@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#F4F0E8">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F4F0E8"/>
+    <text x="600" y="420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="150" font-weight="500" fill="#211E1A">RedBug</text>
+    <circle cx="838" cy="318" r="18" fill="#7E2230"/>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#F4F0E8;}
+  input,textarea,button{font-family:inherit;}
+  textarea{resize:none;}
+  ::selection{background:#7E2230;color:#F4F0E8;}
+  @keyframes rbUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes rbImg{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+  @keyframes rbFade{from{opacity:0}to{opacity:1}}
+  @keyframes rbWipe{from{clip-path:inset(0 100% 0 0);opacity:0}to{clip-path:inset(0 -3% 0 0);opacity:1}}
+  @keyframes kb{from{transform:scale(1)}to{transform:scale(1.085)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:0.001s !important;animation-delay:0s !important;animation-iteration-count:1 !important}}
+</style>
+</helmet>
+
+<div style="font-family:'Manrope',sans-serif;color:#211E1A;background:#F4F0E8;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(244,240,232,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(33,30,26,0.10);">
+    <div style="max-width:1180px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:18px 24px;flex-wrap:wrap;">
+      <a href="#top" style="display:flex;align-items:center;text-decoration:none;">
+        <img src="assets/logo-redbug.png" alt="RedBug" style="height:54px;width:auto;display:block;" />
+      </a>
+      <nav style="display:flex;align-items:center;flex-wrap:wrap;gap:14px 30px;">
+        <a href="#story" style="text-decoration:none;color:#46423B;font-size:13px;font-weight:500;letter-spacing:0.03em;">{{ t.navAbout }}</a>
+        <a href="#make" style="text-decoration:none;color:#46423B;font-size:13px;font-weight:500;letter-spacing:0.03em;">{{ t.navWhat }}</a>
+        <a href="#partner" style="text-decoration:none;color:#46423B;font-size:13px;font-weight:500;letter-spacing:0.03em;">{{ t.navPartner }}</a>
+        <a href="#contact" style="text-decoration:none;color:#46423B;font-size:13px;font-weight:500;letter-spacing:0.03em;">{{ t.navContact }}</a>
+        <div style="display:flex;align-items:center;gap:9px;padding-left:24px;border-left:1px solid rgba(33,30,26,0.14);">
+          <button onClick="{{ setEn }}" style="background:none;border:none;padding:2px 0;cursor:pointer;position:relative;">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#211E1A;">EN</span>
+            <sc-if value="{{ isEn }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:0;right:0;bottom:-4px;height:2px;background:#7E2230;"></span></sc-if>
+          </button>
+          <span style="color:rgba(33,30,26,0.3);font-size:12px;">/</span>
+          <button onClick="{{ setVi }}" style="background:none;border:none;padding:2px 0;cursor:pointer;position:relative;">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#211E1A;">VI</span>
+            <sc-if value="{{ isVi }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-4px;height:2px;background:#7E2230;"></span></sc-if>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO BANNER -->
+    <section style="position:relative;width:100%;min-height:clamp(560px,82vh,820px);display:flex;align-items:center;overflow:hidden;background:#E7DECF;">
+      <div style="position:absolute;inset:0;background-image:url('assets/banner.png');background-size:cover;background-position:72% center;transform-origin:62% 50%;animation:kb 24s ease-in-out 1.4s infinite alternate;"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(96deg, rgba(244,240,232,0.97) 0%, rgba(244,240,232,0.93) 30%, rgba(244,240,232,0.62) 50%, rgba(244,240,232,0.12) 66%, rgba(244,240,232,0) 80%);"></div>
+      <div style="position:relative;width:100%;max-width:1180px;margin:0 auto;padding:clamp(48px,7vh,96px) 32px;">
+        <div style="max-width:560px;">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#7E2230;margin-bottom:24px;animation:rbUp .8s cubic-bezier(.2,.65,.2,1) .1s both;">{{ t.heroEyebrow }}</div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(46px,5.8vw,82px);line-height:1.0;letter-spacing:-0.015em;margin:0 0 26px;color:#211E1A;text-wrap:balance;animation:rbWipe 1.1s cubic-bezier(.2,.65,.2,1) .25s both;">{{ t.heroTitle }}</h1>
+          <p style="font-size:clamp(16px,1.35vw,18px);line-height:1.72;color:#54504A;max-width:30em;margin:0 0 36px;animation:rbUp .85s cubic-bezier(.2,.65,.2,1) .42s both;">{{ t.heroBody }}</p>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;animation:rbUp .85s cubic-bezier(.2,.65,.2,1) .56s both;">
+            <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#7E2230;color:#F4F0E8;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.02em;padding:16px 32px;border-radius:2px;transition:transform .28s cubic-bezier(.2,.65,.2,1),box-shadow .28s ease;" style-hover="transform:translateY(-2px);box-shadow:0 16px 32px -12px rgba(126,34,48,0.55);">{{ t.heroCta1 }}<span style="font-size:16px;">→</span></a>
+            <a href="#story" style="display:inline-flex;align-items:center;gap:9px;color:#211E1A;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:0.02em;padding:16px 6px;border-bottom:1px solid rgba(33,30,26,0.32);transition:color .25s ease,border-color .25s ease;" style-hover="color:#7E2230;border-color:#7E2230;">{{ t.heroCta2 }}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section style="background:#EFE8DA;border-top:1px solid rgba(33,30,26,0.10);border-bottom:1px solid rgba(33,30,26,0.10);">
+      <div style="max-width:1180px;margin:0 auto;padding:clamp(52px,7vw,92px) 32px clamp(40px,5vw,68px);">
+        <div style="text-align:center;margin-bottom:clamp(20px,3vw,40px);">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#7E2230;">{{ t.exportEyebrow }}</div>
+        </div>
+        <div style="max-width:1080px;margin:0 auto;">{{ flightScene }}</div>
+      </div>
+    </section>
+
+    <!-- CREDIBILITY -->
+    <section style="border-top:1px solid rgba(33,30,26,0.12);border-bottom:1px solid rgba(33,30,26,0.12);">
+      <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+        <div style="padding:34px 28px 34px 0;border-right:1px solid rgba(33,30,26,0.12);">
+          <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:10px;">{{ t.credLabel1 }}</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#211E1A;line-height:1.2;">{{ t.credVal1 }}</div>
+        </div>
+        <div style="padding:34px 28px;border-right:1px solid rgba(33,30,26,0.12);">
+          <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:10px;">{{ t.credLabel2 }}</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#211E1A;line-height:1.2;">{{ t.credVal2 }}</div>
+        </div>
+        <div style="padding:34px 28px;border-right:1px solid rgba(33,30,26,0.12);">
+          <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:10px;">{{ t.credLabel3 }}</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#211E1A;line-height:1.2;">{{ t.credVal3 }}</div>
+        </div>
+        <div style="padding:34px 0 34px 28px;">
+          <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:10px;">{{ t.credLabel4 }}</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#211E1A;line-height:1.2;">{{ t.credVal4 }}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="story" style="scroll-margin-top:90px;max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(44px,5vw,80px);align-items:center;">
+      <div style="position:relative;aspect-ratio:3/2;border-radius:4px;overflow:hidden;background:#E7DECF;box-shadow:0 2px 4px rgba(33,30,26,0.06), 0 36px 70px -38px rgba(33,30,26,0.5);">
+        <image-slot id="story-img" shape="rect" placeholder="Drop a workshop / studio image" style="position:absolute;inset:0;width:100%;height:100%;filter:grayscale(0.22) sepia(0.2) saturate(0.94) brightness(1.02) contrast(1.04);"></image-slot>
+        <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 38%, rgba(193,150,96,0.16), rgba(126,34,48,0.10) 70%, rgba(43,32,26,0.30));mix-blend-mode:soft-light;"></div>
+        <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(33,30,26,0.18) 0%, rgba(33,30,26,0) 26%, rgba(33,30,26,0) 60%, rgba(33,30,26,0.5));"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;pointer-events:none;display:flex;align-items:center;gap:11px;padding:18px 22px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#D8B878;flex:none;box-shadow:0 0 0 3px rgba(216,184,120,0.22);"></span>
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,232,0.94);">{{ t.storyCaption }}</span>
+        </div>
+        <div style="position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(244,240,232,0.10);border-radius:4px;"></div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#7E2230;margin-bottom:22px;">{{ t.storyEyebrow }}</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,4.4vw,56px);line-height:1.06;letter-spacing:-0.01em;margin:0 0 28px;color:#211E1A;text-wrap:balance;">{{ t.storyTitle }}</h2>
+        <p style="font-size:17px;line-height:1.78;color:#615C54;margin:0 0 20px;">{{ t.storyP1 }}</p>
+        <p style="font-size:17px;line-height:1.78;color:#615C54;margin:0;">{{ t.storyP2 }}</p>
+      </div>
+    </section>
+
+    <!-- WHAT WE MAKE -->
+    <section id="make" style="scroll-margin-top:90px;background:#EFE8DA;border-top:1px solid rgba(33,30,26,0.10);border-bottom:1px solid rgba(33,30,26,0.10);">
+      <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px);">
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#7E2230;margin-bottom:20px;">{{ t.whatEyebrow }}</div>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-0.01em;margin:0;color:#211E1A;max-width:14em;text-wrap:balance;">{{ t.whatTitle }}</h2>
+          </div>
+          <p style="font-size:15px;line-height:1.7;color:#6E685F;max-width:24em;margin:0;">{{ t.whatBody }}</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,40px);">
+          <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="3">
+            <div>
+              <image-slot id="{{ cat.slotId }}" shape="rounded" radius="3" placeholder="{{ cat.ph }}" style="display:block;width:100%;aspect-ratio:4/5;background:#E2D8C7;margin-bottom:22px;"></image-slot>
+              <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#7E2230;">{{ cat.num }}</span>
+                <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:27px;line-height:1.1;margin:0;color:#211E1A;">{{ cat.title }}</h3>
+              </div>
+              <p style="font-size:15px;line-height:1.7;color:#615C54;margin:0;">{{ cat.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNER / TRUST -->
+    <section id="partner" style="scroll-margin-top:0;background:#1B1916;color:#F1EBDF;">
+      <div style="max-width:1180px;margin:0 auto;padding:clamp(84px,12vw,148px) 32px;">
+        <div style="max-width:38em;margin-bottom:clamp(48px,6vw,76px);">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#C9A86A;margin-bottom:24px;">{{ t.partnerEyebrow }}</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,62px);line-height:1.04;letter-spacing:-0.01em;margin:0 0 26px;color:#F4EEE2;text-wrap:balance;">{{ t.partnerTitle }}</h2>
+          <p style="font-size:17px;line-height:1.78;color:#A8A093;margin:0;">{{ t.partnerBody }}</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.10);">
+          <sc-for list="{{ trust }}" as="item" hint-placeholder-count="6">
+            <div style="background:#1B1916;padding:36px 32px;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#C9A86A;line-height:1;margin-bottom:20px;">{{ item.num }}</div>
+              <h3 style="font-size:17px;font-weight:700;letter-spacing:0.01em;margin:0 0 12px;color:#F1EBDF;">{{ item.title }}</h3>
+              <p style="font-size:14.5px;line-height:1.7;color:#9C9488;margin:0;">{{ item.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size:13px;color:#6E685D;margin:30px 0 0;letter-spacing:0.02em;">{{ t.partnerFoot }}</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="scroll-margin-top:90px;max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,90px);">
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#7E2230;margin-bottom:22px;">{{ t.contactEyebrow }}</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-0.01em;margin:0 0 24px;color:#211E1A;text-wrap:balance;">{{ t.contactTitle }}</h2>
+        <p style="font-size:17px;line-height:1.78;color:#615C54;margin:0 0 40px;max-width:26em;">{{ t.contactBody }}</p>
+        <div style="display:flex;flex-direction:column;gap:22px;">
+          <div>
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:6px;">{{ t.contactEmailLabel }}</div>
+            <a href="#contact" onClick="{{ mailMe }}" style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#211E1A;text-decoration:none;cursor:pointer;">{{ emailUser }}@{{ emailDomain }}</a>
+          </div>
+          <div>
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:6px;">{{ t.contactLocLabel }}</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#211E1A;">{{ t.contactLoc }}</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#FBF9F4;border:1px solid rgba(33,30,26,0.12);border-radius:3px;padding:clamp(30px,3.4vw,46px);">
+        <sc-if value="{{ formVisible }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:28px;">
+            <label style="display:block;">
+              <span style="display:block;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:10px;">{{ t.formName }}</span>
+              <input type="text" required style="width:100%;border:none;border-bottom:1px solid rgba(33,30,26,0.24);background:transparent;padding:8px 0;font-size:16px;color:#211E1A;outline:none;" />
+            </label>
+            <label style="display:block;">
+              <span style="display:block;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:10px;">{{ t.formEmail }}</span>
+              <input type="email" required style="width:100%;border:none;border-bottom:1px solid rgba(33,30,26,0.24);background:transparent;padding:8px 0;font-size:16px;color:#211E1A;outline:none;" />
+            </label>
+            <label style="display:block;">
+              <span style="display:block;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A938A;margin-bottom:10px;">{{ t.formMsg }}</span>
+              <textarea rows="3" style="width:100%;border:none;border-bottom:1px solid rgba(33,30,26,0.24);background:transparent;padding:8px 0;font-size:16px;color:#211E1A;outline:none;line-height:1.6;"></textarea>
+            </label>
+            <button type="submit" style="align-self:flex-start;background:#211E1A;color:#F4F0E8;border:none;font-size:14px;font-weight:600;letter-spacing:0.02em;padding:15px 34px;border-radius:2px;cursor:pointer;">{{ t.formSend }}</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:30px 0;text-align:left;">
+            <div style="width:46px;height:46px;border-radius:50%;background:#7E2230;color:#F4F0E8;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:22px;">✓</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;margin:0 0 12px;color:#211E1A;">{{ t.sentTitle }}</h3>
+            <p style="font-size:15px;line-height:1.7;color:#615C54;margin:0;">{{ t.sentBody }}</p>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="border-top:1px solid rgba(33,30,26,0.14);">
+      <div style="max-width:1180px;margin:0 auto;padding:46px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;">
+          <img src="assets/logo-redbug.png" alt="RedBug" style="height:46px;width:auto;display:block;" />
+        </div>
+        <div style="font-size:13px;color:#6E685F;letter-spacing:0.02em;">{{ t.footerNote }}</div>
+        <div style="font-size:12px;color:#9A938A;letter-spacing:0.04em;">© {{ year }} RedBug LLC</div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { lang: 'en', submitted: false };
+
+  componentDidMount() {
+    const each = (fn) => {
+      try {
+        document.querySelectorAll('section *').forEach((el) => {
+          const ans = el.getAnimations ? el.getAnimations() : [];
+          ans.forEach((a) => { if (a.animationName && a.animationName.indexOf('rb') === 0) fn(a); });
+        });
+      } catch (e) {}
+    };
+    // Kick entrance animations that fail to auto-start (e.g. unfocused/embedded contexts)
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      each((a) => { if (a.startTime == null) { try { a.startTime = document.timeline.currentTime; } catch (e) {} } });
+    }));
+    // Safety net: never leave content hidden if animations never run
+    this._revealT = setTimeout(() => { each((a) => { if (a.playState !== 'finished' && a.startTime == null) { try { a.finish(); } catch (e) {} } }); }, 2600);
+  }
+
+  componentWillUnmount() { clearTimeout(this._revealT); }
+
+  content() {
+    const en = {
+      navAbout: 'About', navWhat: 'What we make', navPartner: 'Partnership', navContact: 'Contact',
+      heroEyebrow: 'RedBug LLC · Kalispell, Montana, USA',
+      heroTitle: 'Goods made with care, sold to the world.',
+      heroBody: 'RedBug is a U.S.-registered commerce house designing print-on-demand apparel, home décor, and handmade goods for global marketplaces such as Etsy and Amazon.',
+      heroCta1: 'Become a partner', heroCta2: 'Our story',
+      heroBadge: 'Founded in Montana',
+      exportEyebrow: 'From idea to the world',
+      exportTitle: 'From Vietnam to the world.',
+      exportBody: 'Every piece is imagined, designed, and crafted with care in Vietnam — then shipped to customers all around the world through Etsy, Amazon, and beyond.',
+      exportVNLabel: 'Vietnam', exportVNSub: 'Designed & crafted',
+      exportWorldLabel: 'Worldwide',
+      step1T: 'Created', step1B: 'Imagined in our Vietnam studio',
+      step2T: 'Crafted', step2B: 'Made with care, by hand',
+      step3T: 'Shipped', step3B: 'Delivered around the world',
+      credLabel1: 'Registered', credVal1: 'Montana LLC, USA',
+      credLabel2: 'Marketplaces', credVal2: 'Etsy & Amazon',
+      credLabel3: 'We make', credVal3: 'POD · Décor · Handmade',
+      credLabel4: 'Agreements', credVal4: 'Bilingual & transparent',
+      storyEyebrow: 'Our story',
+      storyCaption: 'RedBug Studio · Vietnam',
+      storyTitle: 'A small house with a careful hand.',
+      storyP1: 'RedBug began with a simple idea: that everyday objects — a shirt, a mug, a piece for the home — are worth making well. We design, we source carefully, and we sell to customers across the world.',
+      storyP2: 'Registered as a limited liability company in the State of Montana, we operate transparently and within the law, so that everyone we work with — customers and partners alike — can trust the name on the label.',
+      whatEyebrow: 'What we make',
+      whatTitle: 'Three things, done thoughtfully.',
+      whatBody: 'From printed apparel to pieces for the home, each line is held to the same standard of quality and care.',
+      cat1Title: 'Print on Demand', cat1Body: 'Apparel, mugs, and posters printed to order — no waste and no excess inventory, made the moment they are wanted.',
+      cat2Title: 'Home Décor', cat2Body: 'Considered pieces that bring warmth and character to a space, chosen for their quality and a quiet sense of style.',
+      cat3Title: 'Handmade Goods', cat3Body: 'One-by-one craftsmanship for people who value the work of the hand and the story behind each object.',
+      partnerEyebrow: 'For our representatives',
+      partnerTitle: 'A partnership built on clarity and trust.',
+      partnerBody: 'When you represent RedBug, you should know exactly who you are working with and exactly where you stand. Our agreements are written, bilingual, and fair — designed to protect you.',
+      partnerFoot: 'Full terms are set out in a written, bilingual Nominee & Operating Agreement signed by both parties.',
+      t1Title: 'Clearly defined roles', t1Body: 'As our representative you handle legal registration and tax matters only — never day-to-day operations or financial decisions.',
+      t2Title: 'No financial exposure', t2Body: 'No money moves through the LLC without your written consent, and you are never liable for its cash flow.',
+      t3Title: 'Full U.S. compliance', t3Body: 'The company is formed and maintained under the laws of the State of Montana, with complete legal and tax records.',
+      t4Title: 'Fair, written compensation', t4Body: 'Your fee is agreed in writing and paid on a clear, recurring schedule — with no ambiguity.',
+      t5Title: 'Mutual confidentiality', t5Body: 'All proprietary and financial information is kept confidential and protected for both parties.',
+      t6Title: 'Everything documented', t6Body: 'Roles, terms, and dispute resolution are recorded in a bilingual agreement, enforceable in Montana or Vietnam.',
+      contactEyebrow: 'Contact',
+      contactTitle: 'Let us build something together.',
+      contactBody: 'Whether you would like to represent RedBug or partner with us, we would love to hear from you. Reach out and we will reply personally.',
+      contactEmailLabel: 'Email', contactLocLabel: 'Address', contactLoc: '1001 S. Main St., STE 600, Kalispell, MT 59901, USA',
+      formName: 'Your name', formEmail: 'Email address', formMsg: 'Message', formSend: 'Send message',
+      sentTitle: 'Thank you.', sentBody: 'We have received your message and will be in touch personally, soon.',
+      footerNote: 'RedBug LLC — Registered in the State of Montana, United States.'
+    };
+    const vi = {
+      navAbout: 'Về chúng tôi', navWhat: 'Sản phẩm', navPartner: 'Hợp tác', navContact: 'Liên hệ',
+      heroEyebrow: 'RedBug LLC · Kalispell, Montana, Hoa Kỳ',
+      heroTitle: 'Sản phẩm được chăm chút, mang đến toàn thế giới.',
+      heroBody: 'RedBug là một công ty thương mại điện tử đăng ký tại Hoa Kỳ, thiết kế sản phẩm in theo yêu cầu, đồ trang trí nhà cửa và hàng thủ công cho các nền tảng như Etsy và Amazon.',
+      heroCta1: 'Trở thành đối tác', heroCta2: 'Câu chuyện của chúng tôi',
+      heroBadge: 'Thành lập tại Montana',
+      exportEyebrow: 'Từ ý tưởng ra thế giới',
+      exportTitle: 'Từ Việt Nam ra thế giới.',
+      exportBody: 'Mỗi sản phẩm được hình thành ý tưởng, thiết kế và chăm chút sản xuất tại Việt Nam — rồi gửi đến khách hàng trên khắp thế giới qua Etsy, Amazon và nhiều nền tảng khác.',
+      exportVNLabel: 'Việt Nam', exportVNSub: 'Thiết kế & sản xuất',
+      exportWorldLabel: 'Toàn thế giới',
+      step1T: 'Sáng tạo', step1B: 'Hình thành tại xưởng ở Việt Nam',
+      step2T: 'Chăm chút', step2B: 'Sản xuất tỉ mỉ, thủ công',
+      step3T: 'Xuất khẩu', step3B: 'Giao đến khắp thế giới',
+      credLabel1: 'Đăng ký', credVal1: 'LLC tại Montana, Hoa Kỳ',
+      credLabel2: 'Nền tảng', credVal2: 'Etsy & Amazon',
+      credLabel3: 'Chúng tôi làm', credVal3: 'In theo yêu cầu · Trang trí · Thủ công',
+      credLabel4: 'Thỏa thuận', credVal4: 'Song ngữ & minh bạch',
+      storyEyebrow: 'Câu chuyện của chúng tôi',
+      storyCaption: 'Xưởng RedBug · Việt Nam',
+      storyTitle: 'Một xưởng nhỏ với đôi tay chỉn chu.',
+      storyP1: 'RedBug bắt đầu từ một ý tưởng giản dị: những vật dụng thường ngày — chiếc áo, chiếc cốc, một món đồ cho ngôi nhà — đều xứng đáng được làm thật cẩn thận. Chúng tôi thiết kế, chọn nguồn kỹ lưỡng và bán đến khách hàng trên khắp thế giới.',
+      storyP2: 'Là công ty TNHH đăng ký tại Bang Montana, chúng tôi vận hành minh bạch và đúng pháp luật, để mọi người làm việc cùng — từ khách hàng đến đối tác — đều tin tưởng vào cái tên trên nhãn sản phẩm.',
+      whatEyebrow: 'Sản phẩm',
+      whatTitle: 'Ba dòng sản phẩm, làm thật chỉn chu.',
+      whatBody: 'Từ áo in đến đồ dùng cho ngôi nhà, mỗi dòng sản phẩm đều giữ cùng một tiêu chuẩn về chất lượng và sự tỉ mỉ.',
+      cat1Title: 'In theo yêu cầu', cat1Body: 'Áo, cốc và poster được in theo đơn đặt hàng — không lãng phí, không tồn kho, làm ngay khi khách cần.',
+      cat2Title: 'Trang trí nhà cửa', cat2Body: 'Những món đồ được chọn lọc, mang hơi ấm và cá tính cho không gian sống, đề cao chất lượng và gu thẩm mỹ tinh tế.',
+      cat3Title: 'Hàng thủ công', cat3Body: 'Sự khéo léo trong từng sản phẩm, dành cho những ai trân trọng giá trị thủ công và câu chuyện sau mỗi món đồ.',
+      partnerEyebrow: 'Dành cho người đại diện',
+      partnerTitle: 'Hợp tác dựa trên sự rõ ràng và tin cậy.',
+      partnerBody: 'Khi đại diện cho RedBug, bạn cần biết chính xác mình đang làm việc với ai và vị trí của mình ở đâu. Thỏa thuận của chúng tôi được lập thành văn bản, song ngữ và công bằng — nhằm bảo vệ bạn.',
+      partnerFoot: 'Các điều khoản đầy đủ được quy định trong Thỏa Thuận Người Đứng Tên & Vận Hành bằng văn bản, song ngữ, có chữ ký của cả hai bên.',
+      t1Title: 'Vai trò rõ ràng', t1Body: 'Là người đại diện, bạn chỉ xử lý việc đăng ký pháp lý và thuế — không tham gia vận hành hằng ngày hay quyết định tài chính.',
+      t2Title: 'Không rủi ro tài chính', t2Body: 'Không một giao dịch nào của LLC được thực hiện nếu thiếu sự đồng ý bằng văn bản của bạn, và bạn không chịu trách nhiệm về dòng tiền.',
+      t3Title: 'Tuân thủ luật Hoa Kỳ', t3Body: 'Công ty được thành lập và duy trì theo luật Bang Montana, với hồ sơ pháp lý và thuế đầy đủ.',
+      t4Title: 'Thù lao minh bạch', t4Body: 'Mức phí được thỏa thuận bằng văn bản và chi trả theo lịch rõ ràng, định kỳ — không mập mờ.',
+      t5Title: 'Bảo mật hai chiều', t5Body: 'Mọi thông tin sở hữu và tài chính đều được giữ bí mật và bảo vệ cho cả hai bên.',
+      t6Title: 'Mọi điều bằng văn bản', t6Body: 'Vai trò, điều khoản và giải quyết tranh chấp được ghi trong hợp đồng song ngữ, có hiệu lực tại Montana hoặc Việt Nam.',
+      contactEyebrow: 'Liên hệ',
+      contactTitle: 'Hãy cùng nhau tạo nên điều gì đó.',
+      contactBody: 'Dù bạn muốn trở thành người đại diện của RedBug hay hợp tác cùng chúng tôi, chúng tôi rất mong được lắng nghe. Hãy liên hệ và chúng tôi sẽ phản hồi trực tiếp.',
+      contactEmailLabel: 'Email', contactLocLabel: 'Địa chỉ', contactLoc: '1001 S. Main St., STE 600, Kalispell, MT 59901, Hoa Kỳ',
+      formName: 'Họ và tên', formEmail: 'Địa chỉ email', formMsg: 'Lời nhắn', formSend: 'Gửi lời nhắn',
+      sentTitle: 'Cảm ơn bạn.', sentBody: 'Chúng tôi đã nhận được lời nhắn và sẽ liên hệ trực tiếp với bạn trong thời gian sớm nhất.',
+      footerNote: 'RedBug LLC — Đăng ký tại Bang Montana, Hoa Kỳ.'
+    };
+    return this.state.lang === 'vi' ? vi : en;
+  }
+
+  renderVals() {
+    const t = this.content();
+    const cats = [
+      { slotId: 'cat-pod', num: '01', title: t.cat1Title, body: t.cat1Body, ph: t.cat1Title },
+      { slotId: 'cat-decor', num: '02', title: t.cat2Title, body: t.cat2Body, ph: t.cat2Title },
+      { slotId: 'cat-handmade', num: '03', title: t.cat3Title, body: t.cat3Body, ph: t.cat3Title }
+    ];
+    const trust = [
+      { num: '01', title: t.t1Title, body: t.t1Body },
+      { num: '02', title: t.t2Title, body: t.t2Body },
+      { num: '03', title: t.t3Title, body: t.t3Body },
+      { num: '04', title: t.t4Title, body: t.t4Body },
+      { num: '05', title: t.t5Title, body: t.t5Body },
+      { num: '06', title: t.t6Title, body: t.t6Body }
+    ];
+    const h = React.createElement;
+    const icons = {
+      shirt: ['M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z'],
+      gift: ['M20 12v10H4V12', 'M2 7h20v5H2z', 'M12 22V7', 'M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z', 'M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z'],
+      mug: ['M4 8h11v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3Z', 'M15 9h2a3 3 0 0 1 0 6h-2', 'M7 2.5v2', 'M11 2.5v2'],
+      frame: ['M3 3h18v18H3z', 'M8.5 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4z', 'M21 15l-5-5L5 21']
+    };
+    const arc = 'M 60 96 Q 500 24 940 96';
+    const worldDots = [[940, 96], [968, 80], [932, 74], [966, 114], [948, 118]];
+    const wps = [
+      { x: 280, ay: 70, t: t.step1T, b: t.step1B },
+      { x: 500, ay: 61, t: t.step2T, b: t.step2B },
+      { x: 720, ay: 70, t: t.step3T, b: t.step3B }
+    ];
+    const parcel = (key, color, begin) => h('g', { opacity: 0 },
+      h('circle', { cx: 0, cy: 0, r: 15, fill: '#FBF9F4', stroke: color, strokeWidth: 1.4 }),
+      h('g', { transform: 'translate(-7.5,-7.5) scale(0.625)', fill: 'none', stroke: color, strokeWidth: 2.2, strokeLinecap: 'round', strokeLinejoin: 'round' },
+        icons[key].map((d, i) => h('path', { key: i, d }))
+      ),
+      h('animateMotion', { dur: '7s', begin, repeatCount: 'indefinite', rotate: '0', path: arc, calcMode: 'linear' }),
+      h('animate', { attributeName: 'opacity', dur: '7s', begin, repeatCount: 'indefinite', values: '0;1;1;1;0', keyTimes: '0;0.08;0.6;0.9;1' })
+    );
+    const flightScene = h('svg', { viewBox: '0 0 1000 180', width: '100%', style: { display: 'block', overflow: 'visible' }, 'aria-hidden': 'true' },
+      h('path', { d: arc, fill: 'none', stroke: '#7E2230', strokeWidth: 1.5, strokeDasharray: '1 9', strokeLinecap: 'round', opacity: 0.4 },
+        h('animate', { attributeName: 'stroke-dashoffset', from: '0', to: '-100', dur: '4s', repeatCount: 'indefinite' })
+      ),
+      h('circle', { cx: 60, cy: 96, r: 8, fill: 'none', stroke: '#7E2230', strokeWidth: 1.5, opacity: 0.5 },
+        h('animate', { attributeName: 'r', values: '8;30', dur: '2.8s', repeatCount: 'indefinite' }),
+        h('animate', { attributeName: 'opacity', values: '0.5;0', dur: '2.8s', repeatCount: 'indefinite' })
+      ),
+      h('circle', { cx: 60, cy: 96, r: 7.5, fill: '#7E2230' }),
+      h('text', { x: 60, y: 120, textAnchor: 'middle', style: { fontFamily: "'Manrope',sans-serif", fontSize: '10.5px', fill: '#9A938A', letterSpacing: '1.5px' } }, (t.exportVNLabel || '').toUpperCase()),
+      worldDots.map((d, i) => h('circle', { key: 'w' + i, cx: d[0], cy: d[1], r: i === 0 ? 6.5 : 3.2, fill: '#211E1A', opacity: i === 0 ? 0.9 : 0.5 })),
+      h('text', { x: 950, y: 138, textAnchor: 'middle', style: { fontFamily: "'Manrope',sans-serif", fontSize: '10.5px', fill: '#9A938A', letterSpacing: '1.5px' } }, (t.exportWorldLabel || '').toUpperCase()),
+      wps.map((w, i) => h('g', { key: 'wp' + i },
+        h('line', { x1: w.x, y1: w.ay + 6, x2: w.x, y2: 120, stroke: '#211E1A', strokeWidth: 1, opacity: 0.15 }),
+        h('circle', { cx: w.x, cy: w.ay, r: 8, fill: '#F4F0E8', stroke: '#7E2230', strokeWidth: 1.5 }),
+        h('circle', { cx: w.x, cy: w.ay, r: 2.8, fill: '#7E2230' }),
+        h('text', { x: w.x, y: 147, textAnchor: 'middle', style: { fontFamily: "'Cormorant Garamond',serif", fontSize: '25px', fill: '#211E1A' } }, w.t),
+        h('text', { x: w.x, y: 169, textAnchor: 'middle', style: { fontFamily: "'Manrope',sans-serif", fontSize: '12.5px', fill: '#6E685F' } }, w.b)
+      )),
+      parcel('frame', '#7E2230', '0s'),
+      parcel('mug', '#A98A52', '1.75s'),
+      parcel('gift', '#211E1A', '3.5s'),
+      parcel('shirt', '#7E2230', '5.25s')
+    );
+    const steps = [
+      { n: '01', t: t.step1T, b: t.step1B },
+      { n: '02', t: t.step2T, b: t.step2B },
+      { n: '03', t: t.step3T, b: t.step3B }
+    ];
+    return {
+      t, cats, trust, flightScene, steps,
+      isEn: this.state.lang === 'en',
+      isVi: this.state.lang === 'vi',
+      submitted: this.state.submitted,
+      formVisible: !this.state.submitted,
+      year: new Date().getFullYear(),
+      emailUser: 'contact',
+      emailDomain: 'redbugllc.com',
+      mailMe: (e) => { if (e && e.preventDefault) e.preventDefault(); window.location.href = 'mailto:' + 'contact' + '@' + 'redbugllc.com'; },
+      setEn: () => this.setState({ lang: 'en' }),
+      setVi: () => this.setState({ lang: 'vi' }),
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ submitted: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
